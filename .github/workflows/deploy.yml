@@ -28,14 +28,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
+      - name: Prepare deployment directory
+        run: |
+          mkdir -p _site
+          cp *.html _site/ 2>/dev/null || true
+          cp favicon.ico _site/ 2>/dev/null || true
+          cp -r assets _site/ 2>/dev/null || true
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # リポジトリのルートディレクトリをそのままアップロード
-          path: '.'
+          # HTMLファイル、favicon.ico、assetsディレクトリのみアップロード
+          path: '_site'
 
   # デプロイジョブ
   deploy:

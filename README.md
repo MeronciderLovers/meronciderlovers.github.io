@@ -6,12 +6,21 @@
 
 https://meronciderlovers.github.io/
 
-## サイト構成
+## ディレクトリ構成
 
-- `index.html` - トップページ
-- `lovers.html` - メロンクリームサイダーのお砂糖図鑑
-- `style.css` - 共通スタイルシート
-- `script.js` - 共通 JavaScript
+```
+.
+├── index.html              # トップページ
+├── lovers.html             # メロンクリームサイダーのお砂糖図鑑
+├── favicon.ico             # ファビコン
+└── assets/                 # 静的アセット
+    ├── css/
+    │   └── style.css       # 共通スタイルシート
+    ├── js/
+    │   └── script.js       # 共通 JavaScript
+    └── images/
+        └── thumbnail-YYYYMMDD_HHMM.jpeg  # OGP画像
+```
 
 ## 技術仕様
 
@@ -33,15 +42,15 @@ https://meronciderlovers.github.io/
 ### 例
 
 ```
-og-image-20250108.jpg
-logo-20250108.png
-banner-20250115.jpg
+thumbnail-20251109_1711.jpeg
+logo-20251109_1200.png
+banner-20251115_0930.jpg
 ```
 
 ### 日付フォーマット
 
-- YYYYMMDD 形式（例: 20250108 は 2025年1月8日）
-- 画像を更新する際は、新しい日付のファイルを作成してください
+- `YYYYMMDD_HHMM` 形式（例: `20251109_1711` は 2025年11月9日 17時11分）
+- 画像を更新する際は、新しい日付時刻のファイルを作成してください
 - HTML 内の参照も忘れずに更新してください
 
 ## 開発方法
@@ -70,6 +79,13 @@ JavaScript で fetch して表示する構成を想定しています。
 
 GitHub Actions により、`main` ブランチへの push または手動実行で
 自動的に GitHub Pages へデプロイされます。
+
+デプロイ時は以下のファイルのみがアップロードされます：
+- すべての `.html` ファイル
+- `favicon.ico`
+- `assets/` ディレクトリ内のすべてのファイル
+
+`README.md` や `LICENSE` などはデプロイされません。
 
 ## ライセンス
 
